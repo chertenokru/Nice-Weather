@@ -22,7 +22,7 @@ import static android.content.ContentValues.TAG;
  * Created by 13th on 06.12.2017.
  */
 
-public class WeatherDataLoader {
+public class OpenWeatherMapDataLoader {
     private static final String KEY = "x-api-key";
     private static final String OPEN_API_MAP = "https://api.openweathermap.org/data/2.5/weather?q=%s&units=metric&lang=ru";
     private static final String OPEN_API_IMAGE ="http://openweathermap.org/img/w/";
