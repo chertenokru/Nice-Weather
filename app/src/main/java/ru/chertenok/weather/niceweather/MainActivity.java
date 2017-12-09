@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import ru.chertenok.weather.niceweather.model.TodayWeather;
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity
 
         GregorianCalendar calendar = new GregorianCalendar( );
         calendar.setTimeInMillis(todayWeather.getLastDateUpdate());
-        tv_date.setText(""+calendar.getTime().toString());
+        tv_date.setText("last update - "+calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE)+":"+calendar.get(Calendar.SECOND));
         iv_icon.setImageBitmap(todayWeather.getIcon());
 
 
