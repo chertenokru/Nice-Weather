@@ -40,7 +40,7 @@ public class TodayWeather  implements Serializable{
         this.map.putAll(map);
       //  if (icon != null && !icon.isRecycled()) icon.recycle();
 
-        this.icon = icon.copy(Bitmap.Config.ARGB_4444,false);
+        this.icon = icon.copy(Bitmap.Config.ARGB_8888,false);
         lastDateUpdate= new Date().getTime();
 
     }

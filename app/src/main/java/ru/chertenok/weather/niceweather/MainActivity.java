@@ -20,11 +20,14 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import ru.chertenok.weather.niceweather.model.TodayWeather;
+import ru.chertenok.weather.niceweather.model.OnLoad;
 import ru.chertenok.weather.niceweather.model.OpenWeatherMapDataLoader;
+import ru.chertenok.weather.niceweather.model.TodayWeather;
+
+import ru.chertenok.weather.niceweather.model.WeatherUndergroundDataLoader;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OpenWeatherMapDataLoader.OnLoad
+        implements OnLoad,NavigationView.OnNavigationItemSelectedListener
 {
 
     private TextView tv_temp;
@@ -76,7 +79,8 @@ public class MainActivity extends AppCompatActivity
     }
 
   private void updateData(){
-      OpenWeatherMapDataLoader.loadDate(getApplicationContext(),todayWeather, this);
+    //  OpenWeatherMapDataLoader.loadDate(getApplicationContext(),todayWeather, this);
+      WeatherUndergroundDataLoader.loadDate(getApplicationContext(),todayWeather,this);
   }
 
   private void updateUI(TodayWeather todayWeather)

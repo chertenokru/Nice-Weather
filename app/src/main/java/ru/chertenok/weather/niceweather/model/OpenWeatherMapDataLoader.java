@@ -76,7 +76,7 @@ public class OpenWeatherMapDataLoader {
         try{
             URL url = new URL(String.format(OPEN_API_MAP,city));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.addRequestProperty(KEY, Config.getKeyApi());
+            connection.addRequestProperty(KEY, Config.DEFAULT_OWM_KEY_API);
 
 
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -137,10 +137,6 @@ public class OpenWeatherMapDataLoader {
         return bitmap;
     }
 
-
-    public interface OnLoad {
-        void onLoad(boolean isOk,TodayWeather todayWeather);
-    }
 
 
 
