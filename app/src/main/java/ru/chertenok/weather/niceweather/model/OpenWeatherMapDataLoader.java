@@ -76,7 +76,7 @@ public class OpenWeatherMapDataLoader {
         try{
             URL url = new URL(String.format(OPEN_API_MAP,city));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.addRequestProperty(KEY, Config.DEFAULT_OWM_KEY_API);
+            connection.addRequestProperty(KEY, Config.getKeyApi());
 
 
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));

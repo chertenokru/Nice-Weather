@@ -2,8 +2,10 @@ package ru.chertenok.weather.niceweather;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,10 +22,10 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import ru.chertenok.weather.niceweather.model.Config;
 import ru.chertenok.weather.niceweather.model.OnLoad;
 import ru.chertenok.weather.niceweather.model.OpenWeatherMapDataLoader;
 import ru.chertenok.weather.niceweather.model.TodayWeather;
-
 import ru.chertenok.weather.niceweather.model.WeatherUndergroundDataLoader;
 
 public class MainActivity extends AppCompatActivity
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity
     private TextView tv_city;
     private TextView tv_date;
     private ImageView iv_icon;
+    private MenuItem mi_wopenmap;
+    private MenuItem mi_wundegraund;
+    private NavigationView navigationView;
 
 
 
@@ -66,21 +71,28 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         tv_temp = findViewById(R.id.tv_temp);
         tv_desc = findViewById(R.id.tv_WeatherDescription);
         tv_city = findViewById(R.id.tv_city);
         tv_date = findViewById(R.id.tv_date);
         iv_icon = findViewById(R.id.iv_Weather);
+        mi_wopenmap = findViewById(R.id.nav_openMap);
+        mi_wundegraund = findViewById(R.id.nav_underground);
+
         todayWeather = new TodayWeather("Moscow,ru");
+        Config.load(getApplicationContext());
         updateData();
     }
 
   private void updateData(){
-    //  OpenWeatherMapDataLoader.loadDate(getApplicationContext(),todayWeather, this);
-      WeatherUndergroundDataLoader.loadDate(getApplicationContext(),todayWeather,this);
+     if (Config.getWeatherSource() == Config.WeatherSource.openMap)
+           OpenWeatherMapDataLoader.loadDate(getApplicationContext(),todayWeather, this);
+     else
+            WeatherUndergroundDataLoader.loadDate(getApplicationContext(),todayWeather,this);
   }
 
   private void updateUI(TodayWeather todayWeather)
@@ -94,14 +106,16 @@ public class MainActivity extends AppCompatActivity
         tv_date.setText("last update - "+calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE)+":"+calendar.get(Calendar.SECOND));
         iv_icon.setImageBitmap(todayWeather.getIcon());
 
-
-
-
+        if (Config.getWeatherSource() == Config.WeatherSource.openMap) navigationView.setCheckedItem(R.id.nav_openMap);
+        if (Config.getWeatherSource() == Config.WeatherSource.Underground) navigationView.setCheckedItem(R.id.nav_underground);
     }
 
+    @Override
+    public void onPrepareSupportNavigateUpTaskStack(@NonNull TaskStackBuilder builder) {
+        super.onPrepareSupportNavigateUpTaskStack(builder);
 
-
-
+        mi_wundegraund.setChecked(Config.getWeatherSource() == Config.WeatherSource.Underground);
+    }
 
     @Override
     public void onBackPressed() {
@@ -141,24 +155,27 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        if (id == R.id.nav_openMap) {
+            Config.setWeatherSource(Config.WeatherSource.openMap);
+            updateData();
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_underground) {
+            Config.setWeatherSource(Config.WeatherSource.Underground);
+            updateData();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Config.save(getApplicationContext());
+    }
+
 
     @Override
     public void onLoad(boolean isOk, final  TodayWeather todayWeather) {

@@ -3,7 +3,6 @@ package ru.chertenok.weather.niceweather.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -22,7 +21,7 @@ import java.util.HashMap;
  * Created by 13th on 06.12.2017.
  */
 
-public class WeatherUndergroundDataLoader {
+public class WeatherUndergroundDataLoader  {
     private static final String OPEN_API_MAP = "http://api.wunderground.com/api/%s/conditions/lang:RU/q/Russia/Moscow.json";
     //private static final String OPEN_API_IMAGE ="http://openweathermap.org/img/w/";
     private static final String OPEN_API_IMAGE_EXT =".png";
@@ -30,6 +29,7 @@ public class WeatherUndergroundDataLoader {
     private static final String NEW_LINE = "\n";
     private static final int ALL_GOOD = 200;
     public static Bitmap icon = null;
+
 
 
    public  static void  loadDate(final Context context, final TodayWeather todayWeather, final OnLoad onLoad)
@@ -73,7 +73,7 @@ public class WeatherUndergroundDataLoader {
 
    private static JSONObject getJSONData(Context context, String city){
         try{
-            URL url = new URL(String.format(OPEN_API_MAP,Config.DEFAULT_WU_KEY_API));
+            URL url = new URL(String.format(OPEN_API_MAP,Config.getKeyApi()));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
          //   connection.addRequestProperty(KEY, Config.getKeyApi());
 
