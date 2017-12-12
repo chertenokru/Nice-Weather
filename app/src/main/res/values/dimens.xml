@@ -7,4 +7,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="size_temp_text">120sp</dimen>
     <dimen name="im_weatherSize">100dp</dimen>
+    <dimen name="fat_top_margin">3dp</dimen>
 </resources>

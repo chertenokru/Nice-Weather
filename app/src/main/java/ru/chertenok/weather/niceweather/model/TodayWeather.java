@@ -20,10 +20,24 @@ public class TodayWeather  implements Serializable{
     private Map<String,String> map  = new HashMap<>();
     private long lastDateUpdate;
     private String city;
+    private String country;
     private Bitmap icon = null;
 
-    public TodayWeather(String city) {
+    public TodayWeather(String city,String country) {
         this.city = city;
+        this.country = country;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCity() {
@@ -54,11 +68,6 @@ public class TodayWeather  implements Serializable{
         return map.get(name);
     }
 
-    /*** return translated string from resource by resource-name
-      * @param context
-     * @param name
-     * @return
-     */
 
     public static String getTranslatedName(Context context, String name)
     {

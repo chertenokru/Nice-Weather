@@ -22,7 +22,7 @@ import java.util.HashMap;
  */
 
 public class WeatherUndergroundDataLoader  {
-    private static final String OPEN_API_MAP = "http://api.wunderground.com/api/%s/conditions/lang:RU/q/Russia/Moscow.json";
+    private static final String OPEN_API_MAP = "http://api.wunderground.com/api/%s/conditions/lang:RU/q/%s/%s.json";
     //private static final String OPEN_API_IMAGE ="http://openweathermap.org/img/w/";
     private static final String OPEN_API_IMAGE_EXT =".png";
     private static final String RESPONSE = "cod";
@@ -38,7 +38,7 @@ public class WeatherUndergroundDataLoader  {
 
        new Thread() {
            public void run() {
-               final JSONObject json = getJSONData(context, todayWeather.getCity());
+               final JSONObject json = getJSONData(context, todayWeather.getCity(),todayWeather.getCountry());
                Log.d("TAG", json.toString());
                    try {
                      //  if (json!=null && (json.getInt(RESPONSE)==ALL_GOOD))
@@ -71,9 +71,9 @@ public class WeatherUndergroundDataLoader  {
    }
 
 
-   private static JSONObject getJSONData(Context context, String city){
+   private static JSONObject getJSONData(Context context, String city,String country){
         try{
-            URL url = new URL(String.format(OPEN_API_MAP,Config.getKeyApi()));
+            URL url = new URL(String.format(OPEN_API_MAP,Config.getKeyApi(),country,city));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
          //   connection.addRequestProperty(KEY, Config.getKeyApi());
 
