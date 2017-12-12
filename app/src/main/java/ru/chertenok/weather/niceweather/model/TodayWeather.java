@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.text.format.Time;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -55,7 +56,7 @@ public class TodayWeather  implements Serializable{
       //  if (icon != null && !icon.isRecycled()) icon.recycle();
 
         this.icon = icon.copy(Bitmap.Config.ARGB_8888,false);
-        lastDateUpdate= new Date().getTime();
+        lastDateUpdate = Calendar.getInstance().getTimeInMillis();
 
     }
 

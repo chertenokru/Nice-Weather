@@ -81,6 +81,7 @@
         android:background="@color/darkMainTextBackground"
         android:foregroundGravity="center"
         android:gravity="center_horizontal|center"
+        android:text="@string/loading"
         android:textColor="@color/darkMainText"
         android:textSize="24sp"
         tools:text="Ясно сухо и мухи не кусают" />

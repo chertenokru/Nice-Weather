@@ -45,9 +45,7 @@ public class OpenWeatherMapDataLoader {
                        if (json!=null && (json.getInt(RESPONSE)==ALL_GOOD))
                        {
 
-                           float  temp = Float.parseFloat(json.getJSONObject("main").getString("temp"));
-
-                           map.put("temp", ""+Math.round(temp)+" ");
+                           map.put("temp", ""+Math.round(json.getJSONObject("main").getDouble("temp"))+" ");
                            map.put("description", json.getJSONArray("weather").getJSONObject(0).getString("description"));
 
                            String ico = OPEN_API_IMAGE+json.getJSONArray("weather").getJSONObject(0).getString("icon")+OPEN_API_IMAGE_EXT;

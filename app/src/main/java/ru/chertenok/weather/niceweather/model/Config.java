@@ -23,6 +23,7 @@ public class Config {
 
     private static final WeatherSource defaultWeatherSource = WeatherSource.openMap;
     private static WeatherSource currentWeatherSource = defaultWeatherSource;
+    private static final String timeFormat = " HH:mm:ss";
 
     public static void load(Context applicationContext) {
 
@@ -38,11 +39,13 @@ public class Config {
         edit.commit();
     }
 
+    public static String getTimeFormat() {
+        return timeFormat;
+    }
 
 
 
-
-        public enum WeatherSource {openMap, Underground};
+    public enum WeatherSource {openMap, Underground};
 
     public static String getLang() {
         return DEFAULT_LANG;

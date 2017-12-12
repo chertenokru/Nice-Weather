@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -113,9 +114,8 @@ public class MainActivity extends AppCompatActivity
         tv_desc.setText(todayWeather.getValueByName("description"));
         tv_city.setText(todayWeather.getCity());
 
-        GregorianCalendar calendar = new GregorianCalendar( );
-        calendar.setTimeInMillis(todayWeather.getLastDateUpdate());
-        tv_date.setText("last update - "+calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE)+":"+calendar.get(Calendar.SECOND));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Config.getTimeFormat());
+        tv_date.setText("last update - "+simpleDateFormat.format(todayWeather.getLastDateUpdate()));
         iv_icon.setImageBitmap(todayWeather.getIcon());
 
         if (Config.getWeatherSource() == Config.WeatherSource.openMap) navigationView.setCheckedItem(R.id.nav_openMap);
