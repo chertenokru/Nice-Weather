@@ -13,19 +13,32 @@ import java.io.Serializable;
  * Save and load setting,store default setting
  */
 public class Config {
+
+    //             CONST
+
+    // ------- weather const-------------------
     private static final String DEFAULT_LANG = "ru";
     private static final String DEFAULT_OWM_KEY_API = "1f3c67e1c4a6a29b6cb512e4038f498e";
     private static final String DEFAULT_WU_KEY_API = "985708306df9d178";
-
+    private static final WeatherSource defaultWeatherSource = WeatherSource.openMap;
+    // ---------  SharedPref ------------------------
     private static final String CONFIG_NAME = "config";
     private static final String CONFIG_PREF_KEY_WEATHER_SOURCE = "source";
-
-
-    private static final WeatherSource defaultWeatherSource = WeatherSource.openMap;
-    private static WeatherSource currentWeatherSource = defaultWeatherSource;
+    // ----------- program ---------------------
     private static final String timeFormat = " HH:mm:ss";
     private static final boolean useBDtoWeather = true;
     private static final boolean useBDtoSetting = false;
+    // ---------- BD ----------------------------
+    private static final int BD_VERSION = 1;
+    private static final String BD_NAME = "weather.db";
+    public static final String BD_CREATE_TABLE_VER_1 = "create table Setting(name varchar, value varchar);"+
+            "create table WeatherToday() ";
+
+
+    //            VAR
+
+    private static WeatherSource currentWeatherSource = defaultWeatherSource;
+
 
 
     public static void load(Context applicationContext) {
@@ -41,6 +54,18 @@ public class Config {
         edit.putString(CONFIG_PREF_KEY_WEATHER_SOURCE, currentWeatherSource.name());
         edit.commit();
     }
+
+
+
+
+    public static int getBdVersion() {
+        return BD_VERSION;
+    }
+
+    public static String getBdName() {
+        return BD_NAME;
+    }
+
 
     public static boolean isUseBDtoWeather() {
         return useBDtoWeather;
