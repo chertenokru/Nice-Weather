@@ -16,6 +16,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
+import ru.chertenok.weather.niceweather.config.Config;
+
 import static android.content.ContentValues.TAG;
 
 /**

@@ -16,6 +16,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
+import ru.chertenok.weather.niceweather.config.Config;
+
 
 /**
  * Created by 13th on 06.12.2017.
@@ -73,7 +75,7 @@ public class WeatherUndergroundDataLoader  {
 
    private static JSONObject getJSONData(Context context, String city,String country){
         try{
-            URL url = new URL(String.format(OPEN_API_MAP,Config.getKeyApi(),country,city));
+            URL url = new URL(String.format(OPEN_API_MAP, Config.getKeyApi(),country,city));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
          //   connection.addRequestProperty(KEY, Config.getKeyApi());
 

@@ -13,7 +13,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -21,10 +20,8 @@ import android.widget.TextView;
 
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-import ru.chertenok.weather.niceweather.model.Config;
+import ru.chertenok.weather.niceweather.config.Config;
 import ru.chertenok.weather.niceweather.model.OnLoad;
 import ru.chertenok.weather.niceweather.model.OpenWeatherMapDataLoader;
 import ru.chertenok.weather.niceweather.model.TodayWeather;

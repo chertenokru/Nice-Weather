@@ -1,4 +1,4 @@
-package ru.chertenok.weather.niceweather.model;
+package ru.chertenok.weather.niceweather.config;
 
 /**
  * Created by 13th on 06.12.2017.
@@ -24,6 +24,9 @@ public class Config {
     private static final WeatherSource defaultWeatherSource = WeatherSource.openMap;
     private static WeatherSource currentWeatherSource = defaultWeatherSource;
     private static final String timeFormat = " HH:mm:ss";
+    private static final boolean useBDtoWeather = true;
+    private static final boolean useBDtoSetting = false;
+
 
     public static void load(Context applicationContext) {
 
@@ -37,6 +40,10 @@ public class Config {
         SharedPreferences.Editor edit = applicationContext.getSharedPreferences(CONFIG_NAME, Context.MODE_PRIVATE).edit();
         edit.putString(CONFIG_PREF_KEY_WEATHER_SOURCE, currentWeatherSource.name());
         edit.commit();
+    }
+
+    public static boolean isUseBDtoWeather() {
+        return useBDtoWeather;
     }
 
     public static String getTimeFormat() {
