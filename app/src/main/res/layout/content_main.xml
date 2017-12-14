@@ -20,32 +20,6 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/winter_nature_560" />
 
-    <TextView
-        android:id="@+id/tv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_margin="@dimen/fat_top_margin"
-        android:layout_toLeftOf="@+id/tv_grad"
-        android:layout_toStartOf="@+id/tv_grad"
-        android:background="@color/darkMainTextBackground"
-        android:padding="5dp"
-        android:textColor="@color/darkMainText"
-        tools:text="5 декабря , 10:45" />
-
-    <TextView
-        android:id="@+id/tv_city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_date"
-        android:layout_alignBottom="@+id/tv_date"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/fat_top_margin"
-        android:background="@color/darkMainTextBackground"
-        android:padding="5dp"
-        android:textColor="@color/darkMainText"
-        tools:text="Orehovo-Zuevo" />
 
     <TextView
         android:id="@+id/tv_temp2"
@@ -107,5 +81,54 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         app:srcCompat="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/darkMainTextBackground"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ib_menu"
+            android:layout_width="@android:dimen/app_icon_size"
+
+            android:layout_height="@android:dimen/app_icon_size"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_reorder" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/fat_top_margin"
+            android:layout_toLeftOf="@+id/tv_grad"
+            android:layout_toStartOf="@+id/tv_grad"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:textColor="@color/darkMainText"
+            tools:text="5 декабря , 10:45" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBaseline="@+id/tv_date"
+            android:layout_alignBottom="@+id/tv_date"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/fat_top_margin"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="5dp"
+            android:textColor="@color/darkMainText"
+            tools:text="Orehovo-Zuevo" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>

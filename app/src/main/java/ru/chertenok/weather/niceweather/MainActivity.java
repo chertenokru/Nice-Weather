@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity
     private MenuItem mi_wopenmap;
     private MenuItem mi_wundegraund;
     private NavigationView navigationView;
-    private FloatingActionButton fab2;
+    private ImageButton ib_menu;
     private DrawerLayout drawer;
 
 
@@ -69,8 +70,8 @@ public class MainActivity extends AppCompatActivity
                 updateData();
             }
         });
-        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-        fab2.setOnClickListener(new View.OnClickListener() {
+        ib_menu =  findViewById(R.id.ib_menu);
+        ib_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
