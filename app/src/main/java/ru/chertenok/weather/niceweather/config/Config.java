@@ -31,8 +31,9 @@ public class Config {
     // ---------- BD ----------------------------
     private static final int BD_VERSION = 1;
     private static final String BD_NAME = "weather.db";
-    public static final String BD_CREATE_TABLE_VER_1 = "create table Setting(name varchar, value varchar);"+
-            "create table WeatherToday() ";
+    public static final String BD_CREATE_TABLE_VER_1 = "create table Setting(name text, value text);"+
+            "create table WeatherToday(_id int, data int, city text, provider text);" +
+            "create table WeatherTodayDetail (id_key int, param text, value text); ";
 
 
     //            VAR

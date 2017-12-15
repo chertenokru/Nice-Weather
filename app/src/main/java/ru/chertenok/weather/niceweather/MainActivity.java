@@ -1,5 +1,6 @@
 package ru.chertenok.weather.niceweather;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
+import ru.chertenok.weather.niceweather.bd.WeatherDateBase;
 import ru.chertenok.weather.niceweather.config.Config;
 import ru.chertenok.weather.niceweather.model.OnLoad;
 import ru.chertenok.weather.niceweather.model.OpenWeatherMapDataLoader;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity
 
     private Handler handler = new Handler();
     private TodayWeather todayWeather;
+    private WeatherDateBase dbW;
 
 
 
@@ -96,6 +99,11 @@ public class MainActivity extends AppCompatActivity
         todayWeather = new TodayWeather("Moscow","ru");
         Config.load(getApplicationContext());
         updateData();
+        dbW = new WeatherDateBase(getApplicationContext());
+        SQLiteDatabase db = dbW.getWritableDatabase();
+        db.execSQL("select * from Setting");
+
+
     }
 
   private void updateData(){
