@@ -7,7 +7,7 @@ package ru.chertenok.weather.niceweather.config;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.io.Serializable;
+
 
 /**
  * Save and load setting,store default setting
@@ -28,17 +28,12 @@ public class Config {
     private static final String timeFormat = " HH:mm:ss";
     private static final boolean useBDtoWeather = true;
     private static final boolean useBDtoSetting = false;
-    // ---------- BD ----------------------------
-    private static final int BD_VERSION = 1;
-    private static final String BD_NAME = "weather.db";
-    public static final String BD_CREATE_TABLE_VER_1 = "create table Setting(name text, value text);"+
-            "create table WeatherToday(_id int, data int, city text, provider text);" +
-            "create table WeatherTodayDetail (id_key int, param text, value text); ";
-
 
     //            VAR
 
     private static WeatherSource currentWeatherSource = defaultWeatherSource;
+
+
 
 
 
@@ -57,15 +52,6 @@ public class Config {
     }
 
 
-
-
-    public static int getBdVersion() {
-        return BD_VERSION;
-    }
-
-    public static String getBdName() {
-        return BD_NAME;
-    }
 
 
     public static boolean isUseBDtoWeather() {

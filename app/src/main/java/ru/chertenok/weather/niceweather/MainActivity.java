@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity
 
     private Handler handler = new Handler();
     private TodayWeather todayWeather;
-    private WeatherDateBase dbW;
 
 
 
@@ -99,9 +98,8 @@ public class MainActivity extends AppCompatActivity
         todayWeather = new TodayWeather("Moscow","ru");
         Config.load(getApplicationContext());
         updateData();
-        dbW = new WeatherDateBase(getApplicationContext());
-        SQLiteDatabase db = dbW.getWritableDatabase();
-        db.execSQL("select * from Setting");
+
+
 
 
     }
